@@ -1,4 +1,4 @@
-import CustomPersonCard, { CustomPersonCardProps } from "../CustomPersonCard";
+import CustomPersonCard, { CustomPersonCardProps } from "../Cards/CustomPersonCard";
 import React from "react";
 
 interface CardListProps {

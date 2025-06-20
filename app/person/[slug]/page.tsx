@@ -6,6 +6,7 @@ import pagesData from "../../../config/pages-data.json";
 import { useEffect, useRef, useState } from "react";
 import { extractColorsFromImage } from "extract-colors";
 import clsx from "clsx";
+import Link from "next/link";
 
 
 
@@ -90,58 +91,31 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Десктоп: таблица */}
-      {/* <div
-        className={clsx(
-          "px-3 pt-6 pb-16 hidden lg:block bg-[#121212] rounded-b-lg"
-        )}
-      >
-        <div className="px-3 grid grid-cols-12 text-gray-500 mb-3 text-sm font-semibold border-b border-white/10 pb-2">
-          <span className="col-span-4">Название</span>
-          <span className="col-span-8">Описание</span>
-        </div>
-
-        <div className="flex flex-col gap-2 cursor-pointer">
-          {person.items.map((item: any, index: number) => (
-            <div
-              key={item.slug || index}
-              className="px-3 grid grid-cols-12 py-3 hover:bg-white/5 rounded transition"
-            >
-              <span className="col-span-4 font-medium truncate mr-5">
-                {item.title}
-              </span>
-              <span className="col-span-8 text-sm text-gray-400 line-clamp-2">
-                {item.description || "Описание отсутствует"}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div> */}
-
-      {/* Мобильная версия: блоки */}
       <div className="px-3 pt-6 pb-16 flex flex-col gap-4 bg-neutral-900 cursor-pointer rounded-b-lg">
         {person.items.map((item: any, index: number) => (
-          <div
-            key={item.slug || index}
-            className="p-4 rounded-md flex flex-row items-center ease-in-out delay-50 duration-100 transition-colors hover:bg-neutral-800"
-          >
-            <div className="relative w-16 h-16 shrink-0 mr-5">
-              <Image
-                src={item.img || "/fallback.jpg"}
-                alt={item.title}
-                fill
-                className="rounded shadow-lg w-full aspect-square object-cover mb-2"
-              />
-            </div>
-            <div>
-              <div className="font-semibold text-white text-base mb-1">
-                {item.title}
+          <Link href={item.href}>
+            <div
+              key={item.slug || index}
+              className="p-4 rounded-md flex flex-row items-center ease-in-out delay-50 duration-100 transition-colors hover:bg-neutral-800"
+            >
+              <div className="relative w-16 h-16 shrink-0 mr-5">
+                <Image
+                  src={item.img || "/fallback.jpg"}
+                  alt={item.title}
+                  fill
+                  className="rounded shadow-lg w-full aspect-square object-cover mb-2"
+                />
               </div>
-              <div className="text-sm text-gray-400 line-clamp-2 w-64 lg:w-[80%]">
-                {item.description || "Описание отсутствует"}
+              <div>
+                <div className="font-semibold text-white text-base mb-1">
+                  {item.title}
+                </div>
+                <div className="text-sm text-gray-400 line-clamp-2 w-64 lg:w-[80%]">
+                  {item.description || "Описание отсутствует"}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
