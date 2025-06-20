@@ -93,11 +93,8 @@ export default function Page() {
 
       <div className="px-3 pt-6 pb-16 flex flex-col gap-4 bg-neutral-900 cursor-pointer rounded-b-lg">
         {person.items.map((item: any, index: number) => (
-          <Link href={item.href}>
-            <div
-              key={item.slug || index}
-              className="p-4 rounded-md flex flex-row items-center ease-in-out delay-50 duration-100 transition-colors hover:bg-neutral-800"
-            >
+          <Link href={item.href} key={item.slug || index}>
+            <div className="p-4 rounded-md flex flex-row items-center ease-in-out delay-50 duration-100 transition-colors hover:bg-neutral-800">
               <div className="relative w-16 h-16 shrink-0 mr-5">
                 <Image
                   src={item.img || "/fallback.jpg"}
