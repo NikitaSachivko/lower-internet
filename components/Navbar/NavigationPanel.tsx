@@ -79,8 +79,6 @@ const Navbar = () => {
     };
   }, []);
 
-  const router = useRouter();
-
   return (
     <aside className="sticky top-0 z-50 bg-black border-b border-white/10">
       <div className="flex items-center gap-2 px-4 py-2">

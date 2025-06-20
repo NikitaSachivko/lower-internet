@@ -17,6 +17,7 @@ const CardList: React.FC<CardListProps> = ({ cards }) => {
             description={c.description}
             img={c.img}
             href={c.href}
+            tags={c.tags}
           />
         );
       })}
