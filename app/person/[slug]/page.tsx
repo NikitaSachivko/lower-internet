@@ -70,7 +70,7 @@ export default function Page() {
       >
         <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6">
           {/* Картинка с ref и crossOrigin для работы extract-colors */}
-          <img
+          <Image
             ref={imgRef}
             src={person.items?.[0]?.img || "/fallback.jpg"}
             alt={person.title}
