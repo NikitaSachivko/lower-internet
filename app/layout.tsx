@@ -19,7 +19,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
   return (
     <html suppressHydrationWarning lang="en">
       <head />
@@ -33,33 +32,9 @@ export default function RootLayout({
           <NavigationPanel />
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <div className="flex">
-              {/* Sidebar that scrolls with the page */}
-              {/* <aside className="w-60 border-r border-white/10 bg-black p-4">
-                <Tabs
-                  aria-label="Navigation"
-                  isVertical
-                  variant="bordered"
-                  classNames={{
-                    tab: "",
-                  }}
-                >
-                  {pages.map((item, index) => (
-                    <Tab
-                      key={index}
-                      title={item.title}
-                      onClick={() => {
-                        setTimeout(() => {
-                          router.push(`/person/${item.slug}`);
-                        }, 200);
-                      }}
-                    ></Tab>
-                  ))}
-                </Tabs>
-              </aside> */}
-
               {/* Main content scrolls normally */}
               <div className="flex flex-col flex-grow">
-                <main className="container mx-auto max-w-7xl py-5 md:py-10 lg:py-20">
+                <main className="container mx-auto max-w-7xl py-20">
                   {children}
                 </main>
                 <footer className="w-full flex items-center justify-center py-3">
