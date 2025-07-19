@@ -28,7 +28,7 @@ const LowerInternetLogoWithLink = () => {
   );
 };
 
-const Navbar = () => {
+export const MobileNavbar = () => {
   const pathname = usePathname();
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
@@ -108,4 +108,36 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export const DesktopNavbar = () => {
+  const pathname = usePathname();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
+  const handleOpen = () => {
+    onOpen();
+  };
+
+  return (
+    <aside className="h-screen w-full z-50 bg-black border-r border-white/10 flex flex-col">
+      <div className="flex items-center gap-2 px-4 py-3">
+        <LowerInternetLogoWithLink />
+      </div>
+      <div className="flex flex-col gap-4 overflow-auto px-4">
+        {pages.map((item, index) => (
+          <Link
+            key={index}
+            href={`/person/${item.slug}`}
+            onClick={onClose}
+            className={clsx(
+              "whitespace-nowrap text-sm font-medium px-4 py-2 rounded-full transition-colors snap-start",
+              pathname === `/person/${item.slug}`
+                ? "bg-white text-black"
+                : "hover:bg-white/10 text-white"
+            )}
+          >
+            {item.title}
+          </Link>
+        ))}
+      </div>
+    </aside>
+  );
+};

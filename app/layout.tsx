@@ -8,11 +8,11 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import NavigationPanel from "@/components/Navbar/NavigationPanel";
+import { MobileNavbar, DesktopNavbar } from "@/components/Navbar/NavigationPanel";
 import { Chip, Tab, Tabs } from "@heroui/react";
 import pages from "@/config/pages-data.json";
 import Link from "next/link";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 
 export default function RootLayout({
   children,
@@ -29,13 +29,20 @@ export default function RootLayout({
         )}
       >
         <div className="min-h-screen">
-          <NavigationPanel />
+          <div className="lg:hidden">
+            <MobileNavbar />
+          </div>
           <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
             <div className="flex">
               {/* Main content scrolls normally */}
               <div className="flex flex-col flex-grow">
-                <main className="container mx-auto max-w-7xl py-20">
+                <main className="flex gap-10">
+                  <div className="hidden lg:block">
+                  <DesktopNavbar />
+                  </div>
+                  <div className="container mx-auto max-w-7xl py-20">
                   {children}
+                  </div>
                 </main>
                 <footer className="w-full flex items-center justify-center py-3">
                   {/* Optional footer */}
